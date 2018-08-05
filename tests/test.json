@@ -1,0 +1,262 @@
+[
+    {
+        "name": "Player 1",
+        "hand": {
+            "cards": [
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                }
+            ],
+            "maxSize": 10
+        },
+        "battleLine": {
+            "line": [],
+            "totalAttack": 0,
+            "highestAttackValue": 0,
+            "hasSpringBonus": false
+        },
+        "hasPassed": false
+    },
+    {
+        "name": "Player 2",
+        "hand": {
+            "cards": [
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                }
+            ],
+            "maxSize": 10
+        },
+        "battleLine": {
+            "line": [],
+            "totalAttack": 0,
+            "highestAttackValue": 0,
+            "hasSpringBonus": false
+        },
+        "hasPassed": false
+    },
+    {
+        "name": "Player 3",
+        "hand": {
+            "cards": [
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                }
+            ],
+            "maxSize": 10
+        },
+        "battleLine": {
+            "line": [],
+            "totalAttack": 0,
+            "highestAttackValue": 0,
+            "hasSpringBonus": false
+        },
+        "hasPassed": false
+    },
+    {
+        "name": "Player 4",
+        "hand": {
+            "cards": [
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 6,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 5,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 4,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 3,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                },
+                {
+                    "type": "mercenary",
+                    "attackValue": 2,
+                    "isSpecial": false
+                }
+            ],
+            "maxSize": 10
+        },
+        "battleLine": {
+            "line": [],
+            "totalAttack": 0,
+            "highestAttackValue": 0,
+            "hasSpringBonus": false
+        },
+        "hasPassed": false
+    }
+]
