@@ -6,6 +6,25 @@ class Board {
         this.dealer = new Dealer();
     }
 
+    addPlayer(player) {
+        this.players.push(player);
+    }
+
+    bishopClear() {
+        const highestAttacks = this.players.map((player, index) => player.highestAttackValue); 
+        const highestAttack = Math.max(...highestAttack);
+        const discards = [];
+
+        this.players.forEach((player) => {
+            if (player.highestAttackValue === highestAttack)
+                discards.concat(player.battleLine.destroyHighestCards())
+                // const removedCards = player.battleLine.removeCardsFromLine(player.highestAttackCard);
+                // discards.push(removedCards);
+        });
+
+        return discards;
+    }
+
     dealCards(numOfCards) {
         for(let i = 0; i < numOfCards; i++) 
             this.players.forEach((player) => this.dealer.dealCardToPlayer(player));

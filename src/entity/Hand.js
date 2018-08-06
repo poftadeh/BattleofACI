@@ -17,11 +17,9 @@ class Hand {
         let cardIndex = -1;
 
         for (let i = 0; i < this.cards.length; i++) {
-            if (this.cards[i].type === card.type
-                && this.cards[i].attackValue === card.attackValue
-            ) {
+            if (this.cards[i].equalsCard(card)) {
                 return cardIndex = i;
-            } 
+            }
         }
 
         return cardIndex;
@@ -32,13 +30,13 @@ class Hand {
     removeCard(card) {
         const cardIndex = this.findCardIndex(card);
 
-        if (cardIndex != -1) {
-           return this.cards.splice(cardIndex, 1).pop();
-        } else {
+        if (cardIndex != -1)
+            return this.cards.splice(cardIndex, 1).pop();
+        else
             throw new Error(`card: ${card} cannot be removed as it is not found.`)
-        }
+
     }
-    
+
     removeCardByString(type, attackValue) {
         const card = {
             type: type,
@@ -61,10 +59,10 @@ class Hand {
     }
 
     setMaxSize(size) {
-        return (
-            typeof (size) == 'number' ?
-                this.maxSize = size : `${size} is not a valid max size`
-        );
+        if (typeof (size) == 'number')
+            return this.maxSize = size
+        else
+            throw new Error(`${size} is not a valid max size`)
     }
 
 }

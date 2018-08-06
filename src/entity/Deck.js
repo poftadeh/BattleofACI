@@ -14,9 +14,7 @@ const NUM_NON_ONE_ATTACK_MERC = 8;
 class Deck {
     constructor() {
         this.cards = [];
-        this.assembleDeck = this.assembleDeck.bind(this);
-        this.addCards = this.addCards.bind(this);
-        this.assembleDeck();
+        this.assemble();
     }
 
     addCards(type, attackValue, isSpecial, numberOfCards) {
@@ -26,22 +24,22 @@ class Deck {
             )
     }
 
-    assembleDeck() {
-        const cards = [];
+    assemble() {
         this.addCards("winter", 0, true, NUM_WINTER);
         this.addCards("spring", 0, true, NUM_SPRING);
         this.addCards("bishop", 0, true, NUM_BISHOP);
         this.addCards("drummer", 0, true, NUM_DRUMMER);
         this.addCards("scarecrow", 0, true, NUM_SCARECROW);
         this.addCards("surrender", 0, true, NUM_SURRENDER);
-        this.addCards("drummer", 0, true, NUM_DRUMMER);
         this.addCards("heroine", 10, true, NUM_HEROINE);
         this.addCards("courtesan", 1, true, NUM_COURTESAN);
         this.addCards("mercenary", 1, false, NUM_ONE_ATTACK_MERC);
+        this.addCards("mercenary", 10, false, NUM_NON_ONE_ATTACK_MERC); 
 
         for (let i = 2; i <= 6; i++)
             this.addCards("mercenary", i, false, NUM_NON_ONE_ATTACK_MERC);
 
+        this.shuffle();
     }
 
     drawCard() {
@@ -52,6 +50,19 @@ class Deck {
         for (let i of this.cards) {
             console.log(i);
         }
+    }
+
+    shuffle() {
+        const tempDeck = [];
+
+        while (this.cards.length > 0) {
+            const randomIndex = Math.floor(Math.random() * this.cards.length);
+            const card = this.cards.splice(randomIndex, 1).pop();
+
+            tempDeck.push(card);
+        }
+
+        this.cards = tempDeck;
     }
 }
 

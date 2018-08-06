@@ -4,7 +4,7 @@ class BattleLine {
         this.line = [];
         this.totalAttack = 0;
         this.highestAttackValue = 0;
-        this.highestAttackCard;
+        this.highestAttackCards = [];
         this.hasSpringBonus = false;
         this.hasDrummer = this.hasDrummer.bind(this);
         this.calculateTotalAttack = this.calculateTotalAttack.bind(this);
@@ -13,21 +13,51 @@ class BattleLine {
     resetBattleLine() {
         this.line = [];
         this.totalAttack = 0;
-        this.highestAttackCard = undefined;
+        this.highestAttackCards = [];
         this.highestAttackValue = 0;
         this.hasSpringBonus = undefined;
         this.season = undefined;
     }
 
     addCardToLine(card) {
-        if (["drummer", "mercenary", "courtesan", "heroine"]
-            .includes(card.type)) {
-            this.line.push(card);
-            this.calculateTotalAttack();
-        } else {
-            throw new Error(`${card.type} cannot be added to line`)
+        this.line.push(card);
+        this.calculateTotalAttack();
+
+        // if (["drummer", "mercenary", "courtesan", "heroine"]
+        //     .includes(card.type)) {
+        //     this.line.push(card);
+        //     this.calculateTotalAttack();
+        // } else {
+        //     throw new Error(`${card.type} cannot be added to line`)
+        // }
+
+    }
+
+    destroyHighestCards() {
+        const removedCards = [];
+
+        for (let i of this.line) {
+            if (this.highestAttackCards.includes(i))
+                removedCards.push(i);
+                this.line.splice(this.line.indexOf(i), 1);
+        }
+    }
+
+    removeCardsFromLine(card) {
+        const removedCards = [];
+
+        for (let i of this.line) {
+            if (i.equalsCard(card))
+                removedCards.push(i);
         }
 
+        this.line = this.line.filter((lineCard) => {
+            return !lineCard.equalsCard(card);
+        });
+
+        this.calculateTotalAttack();
+
+        return removedCards;
     }
 
     getHighestAttackCard() {
@@ -48,6 +78,8 @@ class BattleLine {
         else {
             throw new Error(`Spring Bonus could not be set to ${bool} during ${this.season}`);
         }
+
+        this.calculateTotalAttack();
     }
 
     setSeason(season) {
@@ -56,6 +88,7 @@ class BattleLine {
         }
 
         this.season = season;
+        this.calculateTotalAttack();
     }
 
     hasDrummer() {
@@ -83,14 +116,14 @@ class BattleLine {
                 attackValue *= 2;
             }
 
-            if (attackValue > this.highestAttackValue) {
+            if (attackValue >= this.highestAttackValue) {
                 this.highestAttackValue = attackValue;
-                this.highestAttackCard = card;
+                this.highestAttackCards.push(card);
             }
 
             this.totalAttack += attackValue;
         });
-    
+
         if (this.hasSpringBonus) {
             this.totalAttack += 3
         }

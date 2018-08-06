@@ -12,9 +12,14 @@ class DealerTester {
 
         this.board = new Board(this.players);
 
-        this.board.dealCards(10);
-        this.board.displayPlayers();
-
+        this.board.dealCards(15);
+        //this.board.displayPlayers();
+        let temp = this.players[0].hand.cards.slice();
+        
+        for (let i of temp) {
+            this.players[0].addCardToBattleLine(i.type, i.attackValue)
+        }
+        console.log(JSON.stringify(this.players[0]));
     }
 }
 
