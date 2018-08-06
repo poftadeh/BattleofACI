@@ -3,7 +3,6 @@ const Dealer = require('./Dealer.js');
 class Board {
     constructor(players) {
         this.players = players;
-        this.dealer = new Dealer();
     }
 
     addPlayer(player) {
@@ -11,23 +10,18 @@ class Board {
     }
 
     bishopClear() {
-        const highestAttacks = this.players.map((player, index) => player.highestAttackValue); 
-        const highestAttack = Math.max(...highestAttack);
-        const discards = [];
+        const highestAttacks = this.players.map((player, index) => player.battleLine.highestAttackValue); 
+        const highestAttack = Math.max(...highestAttacks);
+        let discards = [];
 
         this.players.forEach((player) => {
-            if (player.highestAttackValue === highestAttack)
-                discards.concat(player.battleLine.destroyHighestCards())
-                // const removedCards = player.battleLine.removeCardsFromLine(player.highestAttackCard);
-                // discards.push(removedCards);
+            if (player.battleLine.highestAttackValue === highestAttack) {
+                const removedCards = player.battleLine.destroyHighestCards();
+                discards = discards.concat(removedCards);
+            }
         });
 
         return discards;
-    }
-
-    dealCards(numOfCards) {
-        for(let i = 0; i < numOfCards; i++) 
-            this.players.forEach((player) => this.dealer.dealCardToPlayer(player));
     }
 
     resetBattleLines() {

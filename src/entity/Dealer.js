@@ -12,6 +12,17 @@ class Dealer {
             player.hand.addCard(card);
         }
     }
+
+    dealSpecificCardToPlayer(player, card) {
+        if (!player.hasMaxCards()) {
+            player.hand.addCard(card);
+        }
+    }
+
+    dealCardsToAllPlayers(players, numOfCards) {
+        for(let i = 0; i < numOfCards; i++) 
+            this.players.forEach((player) => this.dealer.dealCardToPlayer(player));
+    }
 }
 
 module.exports = Dealer;

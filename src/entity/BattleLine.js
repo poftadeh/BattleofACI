@@ -35,12 +35,17 @@ class BattleLine {
 
     destroyHighestCards() {
         const removedCards = [];
+        const tempLine = this.line.slice(); // removing cards interferes with the logic so use a temp.
 
-        for (let i of this.line) {
-            if (this.highestAttackCards.includes(i))
+        for (let i of tempLine) {
+            if (this.highestAttackCards.includes(i)) {
                 removedCards.push(i);
                 this.line.splice(this.line.indexOf(i), 1);
+            }
         }
+
+        this.calculateTotalAttack();
+        return removedCards;
     }
 
     removeCardsFromLine(card) {
@@ -103,20 +108,20 @@ class BattleLine {
     calculateTotalAttack() {
         this.totalAttack = 0;
         this.highestAttackValue = 0;
-        this.highestAttackCard = null;
+        this.highestAttackCards = [];
 
         this.line.forEach((card) => {
             let attackValue = card.attackValue;
 
-            if (this.season === "winter" && !card.isSpecial) {
+            if (!card.isSpecial && this.season === "winter") {
                 attackValue = 1;
             }
 
-            if (this.hasDrummer() && !card.isSpecial) {
+            if (!card.isSpecial && this.hasDrummer()) {
                 attackValue *= 2;
             }
 
-            if (attackValue >= this.highestAttackValue) {
+            if (!card.isSpecial && attackValue >= this.highestAttackValue) {
                 this.highestAttackValue = attackValue;
                 this.highestAttackCards.push(card);
             }

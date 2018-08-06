@@ -1,5 +1,6 @@
 const BattleLine = require('./BattleLine.js');
 const Hand = require('./Hand.js');
+const Card = require('./Card.js');
 // const readline = require('readline');
 // const r1 = readline.createInterface(process.stdin, process.stdout);
 
@@ -9,8 +10,6 @@ class Player {
         this.hand = new Hand();
         this.battleLine = new BattleLine();
         this.hasPassed = false;
-        this.question = this.question.bind(this);
-
     }
 
     // turn() {
@@ -43,16 +42,21 @@ class Player {
         return this.hand.getSize() >= this.hand.getMaxSize();
     }
 
-    addCardToBattleLine(card) {
+    addCardToBattleLine(type, attackValue) {
+        const card = new Card(type, attackValue);
+
         if (!this.hasPassed) {
+
+            // remove card from hand first
             const removedCard = this.hand.removeCard(card);
 
-            if (removedCard.type)
+            if (removedCard) {
                 this.battleLine.addCardToLine(removedCard);
-            else
-                throw new Error(`card: {${type}, ${attackValue}} cannot be added to line!`);
+            } else {
+                throw new Error(`Can't add card to battle line that doesn't exist in hand`);
+            }
         } else {
-            throw new Error(`${this.name} has passed and cannot add card to BattleLine.`)
+            throw new Error(`${this.name} has passed and cannot add card to BattleLine.`);
         }
     }
 

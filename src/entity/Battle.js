@@ -2,10 +2,11 @@ const Board = require('./Board');
 
 
 class Battle {
-    constructor(players, goesFirst) {
+    constructor(players, board, dealer, goesFirst) {
         this.players = players;
         this.playerToAct = goesFirst;
-        this.board = new Board(players);
+        this.dealer = dealer;
+        this.board = board;
         this.victor;
     }
 
@@ -15,15 +16,17 @@ class Battle {
         }
     }
 
-    turn(player, action) {
+    // if there is an action, the type and attackValue arguments will be passed
+    //
+    turn(player, action, type, attackValue) {
         if (player !== this.playerToAct) 
-            return new Error(`It's not ${player} turn it's ${this.playerToAct}.`)
+            return new Error(`It's not ${player} turn it's ${this.playerToAct} who should act.`)
 
-        if (action.type) {
-            this.player.addCardToBattleLine(card);
-            doSpecialActions(action);
-        } else if (action === 'Pass') {
-            this.player.hasPassed = true;
+        if (action === 'play') {
+            player.addCardToBattleLine(type, attackValue);
+            this.doSpecialActions(type);
+        } else if (action === 'pass') {
+            player.hasPassed = true;
         } else {
             throw new Error(`Invalid action detected in Battle`);
         }
@@ -33,16 +36,16 @@ class Battle {
         this.board.players.filter()
     }
 
-    doSpecialActions(card) {
-        switch (card.type) {
+    doSpecialActions(type) {
+        switch (type) {
             case "bishop": 
-                board.bishopClear();
+                this.board.bishopClear();
                 break;
             case "winter":
-                board.setSeasons("winter");
+                this.board.setSeasons("winter");
                 break;
             case "spring":
-                board.setSeasons("spring");
+                this.board.setSeasons("spring");
                 break;
             case "surrender": 
                 
@@ -50,3 +53,5 @@ class Battle {
     }
 
 }
+
+module.exports = Battle;
