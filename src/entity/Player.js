@@ -5,11 +5,12 @@ const Card = require('./Card.js');
 // const r1 = readline.createInterface(process.stdin, process.stdout);
 
 class Player {
-    constructor(name) {
+    constructor(name, territories) {
         this.name = name;
         this.hand = new Hand();
         this.battleLine = new BattleLine();
         this.hasPassed = false;
+        this.territories = territories || 0;
     }
 
     // turn() {
@@ -37,6 +38,15 @@ class Player {
     //         });
     //     });
     // }
+
+    addTerritory() {
+        this.territories++;
+        this.hand.incrementMaxSize();
+    }
+
+    hasAnyCards() {
+        return this.hand.getSize() > 0;
+    }
 
     hasMaxCards() {
         return this.hand.getSize() >= this.hand.getMaxSize();

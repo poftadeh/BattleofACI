@@ -9,8 +9,10 @@ class Board {
         this.players.push(player);
     }
 
+
+
     bishopClear() {
-        const highestAttacks = this.players.map((player, index) => player.battleLine.highestAttackValue); 
+        const highestAttacks = this.players.map((player, index) => player.battleLine.highestAttackValue);
         const highestAttack = Math.max(...highestAttacks);
         let discards = [];
 
@@ -24,12 +26,26 @@ class Board {
         return discards;
     }
 
-    resetBattleLines() {
-        this.players.forEach((player) => player.battleLine.resetBattleLine());
+    grantSpringBonus() {
+        const highestAttacks = this.players.map((player, index) => player.battleLine.highestAttackValue);
+        const highestAttack = Math.max(...highestAttacks);
+
+        this.players.forEach((player) => {
+            if (player.battleLine.highestAttackValue === highestAttack) {
+                player.toggleSpringBonus(true);
+            }
+        });
+
     }
 
-    resetSpringBonus() {
-        this.players.forEach((player) => player.battleLine.setSpringBonus(false));
+    resetBattleLines() {
+        let discards = [];
+        
+        this.players.forEach((player) => {
+            discards = discards.concat((player.battleLine.resetBattleLine()));
+        });
+
+        return discards;
     }
 
     calculateTotalAttacks() {
@@ -42,6 +58,10 @@ class Board {
         }
         else {
             this.players.forEach((player) => player.battleLine.setSeason(season));
+        }
+
+        if (season === 'spring') {
+            this.grantSpringBonus();
         }
     }
 

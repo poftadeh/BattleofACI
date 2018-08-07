@@ -11,12 +11,15 @@ class BattleLine {
     }
 
     resetBattleLine() {
+        const discards = this.line.slice();
         this.line = [];
         this.totalAttack = 0;
         this.highestAttackCards = [];
         this.highestAttackValue = 0;
         this.hasSpringBonus = undefined;
         this.season = undefined;
+
+        return discards;
     }
 
     addCardToLine(card) {
@@ -48,21 +51,20 @@ class BattleLine {
         return removedCards;
     }
 
-    removeCardsFromLine(card) {
-        const removedCards = [];
-
-        for (let i of this.line) {
-            if (i.equalsCard(card))
-                removedCards.push(i);
+    removeCardFromLine(type, attackValue) {
+        const removedCard = [];
+        
+        for (let i = 0; i < this.line.length; i++) {
+            if (this.line[i].type === type
+                && this.line[i].attackValue == attackValue
+            ) {
+                removedCard.push(this.line.splice(i, 1).pop());
+                break;
+            }
         }
 
-        this.line = this.line.filter((lineCard) => {
-            return !lineCard.equalsCard(card);
-        });
-
         this.calculateTotalAttack();
-
-        return removedCards;
+        return removedCard;
     }
 
     getHighestAttackCard() {
@@ -73,7 +75,7 @@ class BattleLine {
         return this.highestAttackValue;
     }
 
-    setSpringBonus(bool) {
+    toggleSpringBonus(bool) {
         if (bool == true && this.season === "spring") {
             this.hasSpringBonus = true;
         }
@@ -88,7 +90,7 @@ class BattleLine {
     }
 
     setSeason(season) {
-        if (season !== "winter" && season !== "summer") {
+        if (season !== "winter" && season !== "spring") {
             throw new Error(`${season} is not a valid season`);
         }
 
@@ -129,7 +131,7 @@ class BattleLine {
             this.totalAttack += attackValue;
         });
 
-        if (this.hasSpringBonus) {
+        if (this.season === 'spring' && this.hasSpringBonus) {
             this.totalAttack += 3
         }
 

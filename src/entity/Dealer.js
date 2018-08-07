@@ -19,9 +19,17 @@ class Dealer {
         }
     }
 
+    collectDiscards(cards) {
+       this.deck.addToDiscards(cards); 
+    }
+
     dealCardsToAllPlayers(players, numOfCards) {
         for(let i = 0; i < numOfCards; i++) 
             this.players.forEach((player) => this.dealer.dealCardToPlayer(player));
+    }
+
+    shuffleDeck() {
+        this.deck.shuffle();
     }
 }
 

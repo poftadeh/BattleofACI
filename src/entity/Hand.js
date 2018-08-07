@@ -33,7 +33,7 @@ class Hand {
         if (cardIndex != -1)
             return this.cards.splice(cardIndex, 1).pop();
         else
-            throw new Error(`card: ${card} cannot be removed as it is not found.`)
+            throw new Error(`card: ${card.type} cannot be removed as it is not found.`)
 
     }
 
@@ -56,6 +56,10 @@ class Hand {
 
     getMaxSize() {
         return this.maxSize;
+    }
+
+    incrementMaxSize() {
+        this.setMaxSize(this.getMaxSize() + 1);
     }
 
     setMaxSize(size) {
