@@ -5,8 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack && node ./public/bundle.js",
-    "babel-run": "babel "
+    "build": "webpack",
+    "babel-run": "babel",
+    "serve": "webpack-dev-server"
+
   },
   "author": "",
   "license": "ISC",

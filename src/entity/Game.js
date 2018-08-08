@@ -1,6 +1,7 @@
 const Battle = require('./Battle.js');
 const Dealer = require('./Dealer.js');
 const Board = require('./Board.js');
+const Player = require('./Player.js');
 
 class Game {
     constructor(playerNames) {
@@ -19,10 +20,10 @@ class Game {
         this.createPlayers();
         this.battle;
         this.board = new Board(this.players);
-        this.goesFirst = players[Math.floor(Math.random() * players.length)];
+        this.goesFirst = this.players[Math.floor(Math.random() * this.players.length)];
         this.dealer = new Dealer();
         this.dealer.shuffleDeck();
-        this.dealer.dealCardsToAllPlayers(7);
+        this.dealer.dealCardsToAllPlayers(this.players, 7);
         this.startNewBattle();
     }
 
@@ -65,3 +66,5 @@ class Game {
     }
 
 }
+
+module.exports = Game

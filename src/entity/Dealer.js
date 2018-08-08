@@ -25,7 +25,7 @@ class Dealer {
 
     dealCardsToAllPlayers(players, numOfCards) {
         for(let i = 0; i < numOfCards; i++) 
-            this.players.forEach((player) => this.dealer.dealCardToPlayer(player));
+            players.forEach((player) => this.dealCardToPlayer(player));
     }
 
     shuffleDeck() {

@@ -9,8 +9,6 @@ class Board {
         this.players.push(player);
     }
 
-
-
     bishopClear() {
         const highestAttacks = this.players.map((player, index) => player.battleLine.highestAttackValue);
         const highestAttack = Math.max(...highestAttacks);
