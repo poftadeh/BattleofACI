@@ -1,52 +1,29 @@
 const Game = require('./src/entity/Game.js')
+const BattleOfACI = require('./frontend/components/BattleOfACI.js')
 const React = require('react')
 const ReactDOM = require('react-dom')
 
-
-
-
-class BattleOfACI extends React.Component {
+class Game extends React.Component {
     constructor(props) {
         super(props);
-        this.show = this.show.bind(this);
-        this.newGame = new Game(['P1', 'P2']);
-        this.state = {
-            players: this.newGame.players
-        }
+        this.game = new Game(['P1', 'P2']);
+        this.act = this.act.bind(this);
     }
 
-    show() {
-        this.newGame.dealer.dealCardsToAllPlayers(this.newGame.players, 1);
-        //this.setState(() => ({ players: this.newGame.players }))
-    }
-
-    foo() {
-        return (
-            this.newGame.players.map((player, index) => {
-                return (
-                    <p key={index}>
-                        {player.hand.cards.map((card, index) => {
-                            return (
-                                <span key={index}>
-                                    {card.type + card.attackValue + ', '}
-                                </span>
-                            );
-                        })}
-                    </p>
-                );
-            })
-        )
+    onAction(player, action, type, attackValue, swapCardType, swapCardAttackValue) {
+        this.game.action(player, action, type, attackValue, swapCardType, swapCardAttackValue)
     }
 
     render() {
         return (
             <div>
-                <h1>test</h1>
-                {this.foo()}
-                <button onClick={this.show}>asdd</button>
+                <BattleOfACI
+                    players={this.game.players}
+                    onAction={this.onAction}
+                />
             </div>
         );
     }
 }
 
-ReactDOM.render(<BattleOfACI />, document.getElementById('app'))
+ReactDOM.render(<Game />, document.getElementById('root'))

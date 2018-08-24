@@ -1,12 +1,26 @@
 const React = require('react');
 
-const Card = (props) => {
-    return (
-        <div>
-            <p>{props.card.type}</p>
-            <p>{props.card.attackValue}</p>
-        </div>
-    );
+class Card extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onAction = this.onAction.bind(this);
+    }
+
+    onAction(e) {
+        this.props.onAction();
+    }
+
+    render() {
+
+        return (
+            <div 
+                className="card"
+                onClick={this.onAction}
+            >
+                {`[${this.props.type}, ${this.props.attackValue}]`}
+            </div>
+        );
+    }
 }
 
 module.exports = Card;

@@ -8,17 +8,22 @@ class Game {
         this.playerNames = playerNames;
         this.players = [];
         this.gameOver;
+        this.goesFirst;
+        this.battle;
+        this.board;
+        this.dealer;
         this.numTerritoriesToWin = 4;
+        this.getState = this.getState.bind(this);
+        this.getPlayerTurn = this.getPlayerTurn.bind(this);
         this.startNewGame();
     }
 
     getState() {
-        return JSON.stringify(this.players);
+        return JSON.stringify(Object.assign(this, {"playerToAct": this.getPlayerTurn(), "isGameOver": this.isGameOver()}));
     }
 
     startNewGame() {
         this.createPlayers();
-        this.battle;
         this.board = new Board(this.players);
         this.goesFirst = this.players[Math.floor(Math.random() * this.players.length)];
         this.dealer = new Dealer();
