@@ -17,23 +17,24 @@ class Battle {
 
     declareWinner() {
         let winners = [];
-        let highestAttack = -1;
+        let highestTotalAttack = -1;
 
         this.players.forEach((player) => {
-            if (player.highestAttackValue > highestAttack) {
+            if (player.battleLine.totalAttack > highestTotalAttack) {
                 winners = [player];
-            } else if (player.highestAttackValue === highestAttack) {
+                highestTotalAttack = player.battleLine.totalAttack;
+            } else if (player.highestTotalAttack === highestTotalAttack) {
                 winners.push(player);
             }
         });
 
-        if (this.winner.length > 1) {
+        if (winners.length > 1) {
             this.winner = "tie";
-        } else if (this.winner.length = 0) {
-            throw new Error(`No winner found for Battle.`)
-        } else {
+        } else if (winners.length === 1) {
             this.winner = winners.pop();
             this.winner.numTerritories++;
+        } else {
+            throw new Error(`No winner found for Battle.`)
         }
     }
 
@@ -41,7 +42,7 @@ class Battle {
         this.playerAction(player, action, type, attackValue, swapCardType, swapCardAttackValue);
         
         if (this.winner) {
-            return winner;
+            return this.winner;
         }
 
         this.playerToAct = this.findNextPlayerToAct();
@@ -67,16 +68,25 @@ class Battle {
         } else {
             throw new Error(`Invalid action detected in Battle`);
         }
+
+        // don't grant bonus if card played was spring, since it was already done above.
+        //
+        if (this.board.season === "spring" && type !== "spring") {
+            this.board.grantSpringBonus();
+        }
     }
 
     findNextPlayerToAct() {
         let nextPlayerToAct;
+        let nextPlayerIndex = (this.players.indexOf(this.playerToAct) + 1) % this.players.length
 
         for (let i = 0; i < this.players.length && !nextPlayerToAct; i++) {
-            let nextPlayerIndex = (this.players.indexOf(player) + 1) % this.players.length
             let candidate = this.players[nextPlayerIndex];
-            if (candidate.hasAnyCards() && !candidate.hasPassed)
+            if (candidate.hasAnyCards() && !candidate.hasPassed) {
                 nextPlayerToAct = candidate;
+            } else {
+                nextPlayerIndex = nextPlayerIndex + 1 % this.players.length;
+            }
         }
 
         return nextPlayerToAct;
@@ -92,7 +102,7 @@ class Battle {
                 player.battleLine.removeCardFromLine(swapCardType, swapCardAttackValue);
                 break;
             case "bishop":
-                dealer.collectDiscards(this.board.bishopClear());
+                this.dealer.collectDiscards(this.board.bishopClear());
                 break;
             case "winter":
                 this.board.setSeasons("winter");

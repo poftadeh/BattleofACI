@@ -7,17 +7,18 @@ class Card extends React.Component {
     }
 
     onAction(e) {
-        this.props.onAction();
+        console.log(e, e.target);
+        this.props.onAction(this.props.player, 'play', this.props.type, this.props.attackValue);
     }
 
     render() {
-
+        const attackValue = this.props.attackValue > 0 ? `, ${this.props.attackValue}` : "";
         return (
             <div 
                 className="card"
-                onClick={this.onAction}
+                onClick={this.props.onAction && this.onAction}
             >
-                {`[${this.props.type}, ${this.props.attackValue}]`}
+                {`[${this.props.type}${attackValue}]`}
             </div>
         );
     }

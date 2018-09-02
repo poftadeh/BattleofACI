@@ -9,6 +9,7 @@ class Board extends React.Component {
           <BattleLine 
             key={player.name} 
             cards={player.battleLine.line} 
+            score={player.battleLine.totalAttack}
           />
         ))}
       </div>

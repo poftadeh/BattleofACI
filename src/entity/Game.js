@@ -33,10 +33,11 @@ class Game {
     }
 
     action(player, action, type, attackValue, swapCardType, swapCardAttackValue) {
-        if (this.battle && player === this.getPlayerTurn())
+        if (player === this.getPlayerTurn()) {
             this.battle.turn(player, action, type, attackValue, swapCardType, swapCardAttackValue);
-        else
-            return { message: `Not ${player.name}'s turn to act!'` };
+        } else{
+            throw new Error(`Not ${player.name}'s turn to act! ${this.getPlayerTurn().name} must play.`);
+        }
     }
 
     getPlayerTurn() {

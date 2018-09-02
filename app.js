@@ -3,22 +3,26 @@ const BattleOfACI = require('./frontend/components/BattleOfACI.js')
 const React = require('react')
 const ReactDOM = require('react-dom')
 
-class Game extends React.Component {
+class Session extends React.Component {
     constructor(props) {
         super(props);
         this.game = new Game(['P1', 'P2']);
-        this.act = this.act.bind(this);
+        this.onAction = this.onAction.bind(this);
+        this.state = {
+            players: this.game.players,
+        }
     }
 
     onAction(player, action, type, attackValue, swapCardType, swapCardAttackValue) {
-        this.game.action(player, action, type, attackValue, swapCardType, swapCardAttackValue)
+        this.game.action(player, action, type, attackValue, swapCardType, swapCardAttackValue);
+        this.setState(() => ({players: this.game.players}));
     }
 
     render() {
         return (
             <div>
                 <BattleOfACI
-                    players={this.game.players}
+                    players={this.state.players}
                     onAction={this.onAction}
                 />
             </div>
@@ -26,4 +30,4 @@ class Game extends React.Component {
     }
 }
 
-ReactDOM.render(<Game />, document.getElementById('root'))
+ReactDOM.render(<Session />, document.getElementById('root'));

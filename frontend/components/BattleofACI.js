@@ -20,6 +20,7 @@ class BattleofACI extends React.Component {
         {this.state.players.map((player) => (
           <Hand
             key={player.name}
+            player={player}
             cards={player.hand.cards}
             onAction={this.props.onAction}
           />

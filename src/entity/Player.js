@@ -5,12 +5,12 @@ const Card = require('./Card.js');
 // const r1 = readline.createInterface(process.stdin, process.stdout);
 
 class Player {
-    constructor(name, territories) {
+    constructor(name, numTerritories) {
         this.name = name;
         this.hand = new Hand();
         this.battleLine = new BattleLine();
         this.hasPassed = false;
-        this.territories = territories || 0;
+        this.numTerritories = numTerritories || 0;
     }
 
     // turn() {

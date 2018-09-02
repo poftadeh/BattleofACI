@@ -3,6 +3,7 @@ const Dealer = require('./Dealer.js');
 class Board {
     constructor(players) {
         this.players = players;
+        this.season;
     }
 
     addPlayer(player) {
@@ -30,10 +31,13 @@ class Board {
 
         this.players.forEach((player) => {
             if (player.battleLine.highestAttackValue === highestAttack) {
-                player.toggleSpringBonus(true);
+                player.battleLine.toggleSpringBonus(true);
+            } else {
+                player.battleLine.toggleSpringBonus(false);
             }
         });
 
+        this.season = "spring";
     }
 
     resetBattleLines() {
@@ -61,6 +65,8 @@ class Board {
         if (season === 'spring') {
             this.grantSpringBonus();
         }
+
+        this.season = season;
     }
 
     displayPlayers() {
