@@ -4,7 +4,7 @@ const Board = require('./Board.js');
 const Player = require('./Player.js');
 
 class Game {
-    constructor(playerNames) {
+    constructor(playerNames, numTerritoriesToWin) {
         this.playerNames = playerNames;
         this.players = [];
         this.gameOver;
@@ -12,7 +12,7 @@ class Game {
         this.battle;
         this.board;
         this.dealer;
-        this.numTerritoriesToWin = 4;
+        this.numTerritoriesToWin = numTerritoriesToWin || 4;
         this.getState = this.getState.bind(this);
         this.getPlayerTurn = this.getPlayerTurn.bind(this);
         this.startNewGame();
@@ -38,6 +38,41 @@ class Game {
         } else{
             throw new Error(`Not ${player.name}'s turn to act! ${this.getPlayerTurn().name} must play.`);
         }
+
+        if (this.battle.winner) {
+            this.postBattleCleanup();
+            this.startNewBattle();
+        }
+    }
+
+    findPlayerToActFirst() {
+        let highestCourtesanCount = -1;
+        let playersWithMostCourtesans = [];
+
+        this.players.forEach((player) => {
+            let playerCourtesanCount = 0;
+            player.battleLine.line.forEach((card) => {
+                if (card.type === "courtesan") 
+                    playerCourtesanCount++;
+            });
+
+            if (playerCourtesanCount > highestCourtesanCount) {
+                highestCourtesanCount = playerCourtesanCount;
+                playersWithMostCourtesans = [player];
+            } else if (playerCourtesanCount === highestCourtesanCount) {
+                playersWithMostCourtesans.push(player);
+            }
+        });
+        
+        if (playersWithMostCourtesans.length === 1) {
+            this.goesFirst = playersWithMostCourtesans.pop();
+        } else if (playersWithMostCourtesans.length > 1) {
+            this.goesFirst = playersWithMostCourtesans[Math.floor(Math.random() * playersWithMostCourtesans.length)]
+        } else if (this.winner && this.winner.length === 1) {
+            this.goesFirst = this.winner;
+        } else {
+            this.goesFirst = players[Math.floor(Math.random() * players.length)]
+        }
     }
 
     getPlayerTurn() {
@@ -54,7 +89,7 @@ class Game {
         let isGameOver = false;
 
         this.players.forEach((player) => {
-            if (player.territories >= this.numTerritoriesToWin)
+            if (player.numTerritories >= this.numTerritoriesToWin)
                 isGameOver = true;
         });
 
@@ -64,11 +99,19 @@ class Game {
     startNewBattle() {
         if (!this.isGameOver()) {
             this.battle = new Battle(this.players, this.board, this.dealer, this.goesFirst);
-            this.dealer.shuffleDeck();
-            this.dealer.dealCardsToAllPlayers(3);
         } else {
-            return { message: `Game is Over!` };
+            throw new Error( `Game is already over!`);
         }
+    }
+
+    postBattleCleanup() {
+        this.findPlayerToActFirst();
+        this.dealer.collectDiscards(this.board.resetBattleLines());
+        this.dealer.mergeDiscardsWithDeck();
+        this.players.forEach((player) => player.hasPassed = false);
+        this.board.season = undefined;
+        this.dealer.shuffleDeck();
+        this.dealer.dealCardsToAllPlayers(this.players, 3);
     }
 
 }

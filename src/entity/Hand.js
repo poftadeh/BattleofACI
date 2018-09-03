@@ -1,9 +1,10 @@
 const Card = require('./Card.js');
+const MAX_HAND_SIZE = 10;
 
 class Hand {
     constructor() {
         this.cards = [];
-        this.maxSize = 10;
+        this.maxSize = MAX_HAND_SIZE;
         this.getMaxSize = this.getMaxSize.bind(this);
         this.addCard = this.addCard.bind(this);
         this.removeCard = this.removeCard.bind(this);
@@ -30,7 +31,7 @@ class Hand {
     removeCard(card) {
         const cardIndex = this.findCardIndex(card);
 
-        if (cardIndex != -1)
+        if (cardIndex !== -1)
             return this.cards.splice(cardIndex, 1).pop();
         else
             throw new Error(`card: ${card.type} cannot be removed as it is not found.`)

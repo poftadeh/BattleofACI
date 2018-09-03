@@ -52,13 +52,13 @@ class BattleLine {
     }
 
     removeCardFromLine(type, attackValue) {
-        const removedCard = [];
-        
+        let removedCard;
+
         for (let i = 0; i < this.line.length; i++) {
             if (this.line[i].type === type
                 && this.line[i].attackValue == attackValue
             ) {
-                removedCard.push(this.line.splice(i, 1).pop());
+                removedCard = this.line.splice(i, 1).pop();
                 break;
             }
         }
@@ -113,27 +113,27 @@ class BattleLine {
         this.highestAttackCards = [];
 
         this.line.forEach((card) => {
-            if (!card.isSpecial) {   
-                let attackValue = card.attackValue;
-                
+            let attackValue = card.attackValue;
+            if (!card.isSpecial) {
                 if (this.season === "winter") {
                     attackValue = 1;
                 }
-                
+
                 if (this.hasDrummer()) {
                     attackValue *= 2;
                 }
                 
-                if (attackValue >= this.highestAttackValue) {
+                if (attackValue > this.highestAttackValue) {
                     this.highestAttackValue = attackValue;
                     this.highestAttackCards = [card];
                 } else if (attackValue === this.highestAttackValue) {
                     this.highestAttackCards.push(card);
                 }
                 
-                this.totalAttack += attackValue;
             }
+            this.totalAttack += attackValue;
         });
+
 
         // give +3 attack for all highest attack cards in Spring
         if (this.season === 'spring' && this.hasSpringBonus) {

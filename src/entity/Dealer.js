@@ -28,6 +28,11 @@ class Dealer {
             players.forEach((player) => this.dealCardToPlayer(player));
     }
 
+    mergeDiscardsWithDeck() {
+        this.deck.cards = this.deck.cards.concat(this.deck.discards);
+        this.shuffleDeck();
+    }
+    
     shuffleDeck() {
         this.deck.shuffle();
     }

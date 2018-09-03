@@ -1,14 +1,22 @@
 const React = require('react');
 const Hand = require('./Hand.js');
-const Board = require('./Board.js')
+const Board = require('./Board.js');
+const PassButton = require('./PassButton.js');
 
 class BattleofACI extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       players: this.props.players,
+      scarecrowSelected: false,
     }
     console.log(this.state.players)
+    this.setSwapCard = this.setState.bind(this);
+    this.toggleScarecrowSelected = this.toggleScarecrowSelected.bind(this);
+  }
+
+  toggleScarecrowSelected(bool) {
+    this.setState(() =>({scarecrowSelected: bool}));
   }
 
   render() {
@@ -16,15 +24,28 @@ class BattleofACI extends React.Component {
       <div>
         <Board
           players={this.state.players}
+          scarecrowSelected={this.state.scarecrowSelected}
+          onAction={this.props.onAction}
+          toggleScarecrowSelected={this.toggleScarecrowSelected}
         />
+        <br />
         {this.state.players.map((player) => (
-          <Hand
-            key={player.name}
-            player={player}
-            cards={player.hand.cards}
-            onAction={this.props.onAction}
-          />
+          <div key={player.name}>
+            <div>Player: {player.name} Territories: {player.numTerritories}</div>
+            <Hand
+              player={player}
+              cards={player.hand.cards}
+              onAction={this.props.onAction}
+              toggleScarecrowSelected={this.toggleScarecrowSelected}
+            />
+            <PassButton 
+              player={player}
+              onAction={this.props.onAction}
+            />
+        </div>
         ))}
+        <br />
+        {`Turn: ${this.props.turn.name}`}
       </div>
     );
   }

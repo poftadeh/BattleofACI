@@ -8,12 +8,14 @@ class Battle {
         this.dealer = dealer;
         this.board = board;
         this.winner;
+        console.log("new battle", this.players);
     }
 
     endBattle() {
         this.declareWinner();
-        this.dealer.collectDiscards(this.board.resetBattleLines());
     }
+
+
 
     declareWinner() {
         let winners = [];
@@ -23,7 +25,7 @@ class Battle {
             if (player.battleLine.totalAttack > highestTotalAttack) {
                 winners = [player];
                 highestTotalAttack = player.battleLine.totalAttack;
-            } else if (player.highestTotalAttack === highestTotalAttack) {
+            } else if (player.battleLine.totalAttack === highestTotalAttack) {
                 winners.push(player);
             }
         });
@@ -62,16 +64,16 @@ class Battle {
 
         if (action === 'play') {
             player.addCardToBattleLine(type, attackValue);
-            this.doSpecialActions(player, type, swapCardType, swapCardAttackValue);
+            this.performSpecialActions(player, type, swapCardType, swapCardAttackValue);
         } else if (action === 'pass') {
             player.hasPassed = true;
         } else {
             throw new Error(`Invalid action detected in Battle`);
         }
 
-        // don't grant bonus if card played was spring, since it was already done above.
+        // don't grant bonus if card played is spring, since it was already done above.
         //
-        if (this.board.season === "spring" && type !== "spring") {
+        if (this.board.season === "spring" && type !== "spring" && !this.winner) {
             this.board.grantSpringBonus();
         }
     }
@@ -85,21 +87,21 @@ class Battle {
             if (candidate.hasAnyCards() && !candidate.hasPassed) {
                 nextPlayerToAct = candidate;
             } else {
-                nextPlayerIndex = nextPlayerIndex + 1 % this.players.length;
+                nextPlayerIndex = (nextPlayerIndex + 1) % this.players.length;
             }
         }
 
         return nextPlayerToAct;
     }
 
-    findWinner() {
-        this.board.players.filter()
-    }
-
-    doSpecialActions(player, type, swapCardType, swapCardAttackValue) {
+    performSpecialActions(player, type, swapCardType, swapCardAttackValue) {
         switch (type) {
             case "scarecrow":
-                player.battleLine.removeCardFromLine(swapCardType, swapCardAttackValue);
+                const removedCard = player.battleLine.removeCardFromLine(swapCardType, swapCardAttackValue);
+                if (removedCard.type !== "mercenary") {
+                    throw new Error(`A ${removedCard.type} card cannot be swapped out!`);
+                }
+                player.hand.addCard(removedCard);
                 break;
             case "bishop":
                 this.dealer.collectDiscards(this.board.bishopClear());

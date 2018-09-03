@@ -1,5 +1,5 @@
 const React = require('react');
-const Card = require('./Card.js');
+const HandCard = require('./HandCard.js');
 
 class Hand extends React.Component {
     constructor(props) {
@@ -7,21 +7,17 @@ class Hand extends React.Component {
         console.log(this.props.cards);
     }
 
-    onAction(e) {
-        console.log(e, e.target);
-        this.props.onAction(this.props.player, 'play', this.props.type, this.props.attackValue);
-    }
-
     render() {
         return (
             <div className="card-row">
                 {this.props.cards.map((card, i) => (
-                    <Card
+                    <HandCard
                         key={card.type + i}
                         player={this.props.player}
                         type={card.type}
                         attackValue={card.attackValue}
                         onAction={this.props.onAction}
+                        toggleScarecrowSelected={this.props.toggleScarecrowSelected}
                     />
                 ))}
             </div>
