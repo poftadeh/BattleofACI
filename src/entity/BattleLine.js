@@ -25,15 +25,6 @@ class BattleLine {
     addCardToLine(card) {
         this.line.push(card);
         this.calculateTotalAttack();
-
-        // if (["drummer", "mercenary", "courtesan", "heroine"]
-        //     .includes(card.type)) {
-        //     this.line.push(card);
-        //     this.calculateTotalAttack();
-        // } else {
-        //     throw new Error(`${card.type} cannot be added to line`)
-        // }
-
     }
 
     destroyHighestCards() {
@@ -136,6 +127,7 @@ class BattleLine {
 
 
         // give +3 attack for all highest attack cards in Spring
+        //
         if (this.season === 'spring' && this.hasSpringBonus) {
             this.totalAttack += (this.highestAttackCards.length * 3);
         }

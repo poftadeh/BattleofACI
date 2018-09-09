@@ -1,7 +1,82 @@
-.card-row {
-    display: flex;
-}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100%;
+    background-color: #2c3e50;
+    font-size: 10px;
+    text-rendering: optimizeLegibility;
+  }
 
-.card {
-    margin: 2px;
-}
+  body {
+      height: 100%;
+  }
+
+  .hand {
+    display: flex;
+    border: 0.5em solid #2980b9;
+    justify-content: center;
+  }
+  
+  .hand-card {
+    margin: 0 0.5em;
+    height: 6em;
+    width: 12em;
+    font-weight: bold;
+    background-color: #ecf0f1;
+    font-size: 1.5em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    vertical-align: center;
+  }
+  
+  span {
+    padding-right: 0.2em; 
+  }
+  
+
+/* 
+============================
+UNITS
+============================ 
+*/
+
+  .mercenary {
+    background-image: url("./images/mercenary.svg");
+  }
+
+  .courtesan {
+    background-image: url("./images/courtesan.svg");
+  }
+  
+  .heroine {
+    background-image: url("./images/heroine.svg");
+  }
+  
+  .winter {
+    background-image: url("./images/winter.svg");
+  }
+
+  .spring {
+    background-image: url("./images/spring.svg");
+  }
+
+  .scarecrow {
+    background-image: url("./images/scarecrow.svg");
+  }
+
+  .bishop {
+    background-image: url("./images/bishop.svg");
+  }
+
+  .surrender {
+    background-image: url("./images/surrender.svg");
+  }
+
+  .drummer {
+    background-image: url("./images/drummer.svg");
+  }

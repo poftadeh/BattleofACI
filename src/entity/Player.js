@@ -13,34 +13,8 @@ class Player {
         this.numTerritories = numTerritories || 0;
     }
 
-    // turn() {
-    //     let choice;
-
-    //     this.question()
-    //         .then((a1) => {
-    //             choice = a1;
-    //             console.log(choice, choice[0], choice[1]);
-    //             this.addCardToBattleLine(choice[0], choice[1]);
-    //         })
-    //         .catch((err) => console.log(err));
-
-    // }
-
-    // promptPlayer(question) {
-    //     question();
-    // }
-
-    // question() {
-    //     return new Promise((resolve, reject) => {
-    //         r1.question('Enter card: ', (answer) => {
-    //             r1.close();
-    //             resolve(answer.split(' '));
-    //         });
-    //     });
-    // }
-
     addTerritory() {
-        this.territories++;
+        this.numTerritories++;
         this.hand.incrementMaxSize();
     }
 

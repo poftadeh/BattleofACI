@@ -9,9 +9,9 @@ class Hand extends React.Component {
 
     render() {
         return (
-            <div className="card-row">
+            <div className="hand">
                 {this.props.cards.map((card, i) => (
-                    <HandCard
+                    (i <= 4) && <HandCard
                         key={card.type + i}
                         player={this.props.player}
                         type={card.type}

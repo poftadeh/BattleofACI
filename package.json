@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "babel-run": "babel",
-    "serve": "webpack-dev-server"
-
+    "serve": "webpack-dev-server",
+    "watch": "webpack-dev-server --progress --colors --hot --inline"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,7 @@
-const Game = require('./src/entity/Game.js')
-const BattleOfACI = require('./frontend/components/BattleOfACI.js')
-const React = require('react')
-const ReactDOM = require('react-dom')
+const Game = require('./src/entity/Game.js');
+const BattleOfACI = require('./frontend/components/BattleOfACI.js');
+const React = require('react');
+const ReactDOM = require('react-dom');
 
 class Session extends React.Component {
     constructor(props) {

@@ -29,7 +29,7 @@ class BattleofACI extends React.Component {
           toggleScarecrowSelected={this.toggleScarecrowSelected}
         />
         <br />
-        {this.state.players.map((player) => (
+        {this.state.players.map((player, i) => (
           <div key={player.name}>
             <div>Player: {player.name} Territories: {player.numTerritories}</div>
             <Hand

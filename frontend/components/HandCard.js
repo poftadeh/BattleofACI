@@ -21,10 +21,10 @@ class HandCard extends React.Component {
         const attackValue = this.props.attackValue > 0 ? `, ${this.props.attackValue}` : "";
         return (
             <div 
-                className="card"
+                className={`hand-card ${this.props.type}`}
                 onClick={this.props.type === "scarecrow" ? this.enableScarecrowSelected : this.onAction}
             >
-                {`[${this.props.type}${attackValue}]`}
+                {/* {`[${this.props.type}${attackValue}]`} */}
             </div>
         );
     }

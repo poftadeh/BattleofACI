@@ -14,9 +14,7 @@ class Battle {
     endBattle() {
         this.declareWinner();
     }
-
-
-
+    
     declareWinner() {
         let winners = [];
         let highestTotalAttack = -1;
@@ -34,7 +32,7 @@ class Battle {
             this.winner = "tie";
         } else if (winners.length === 1) {
             this.winner = winners.pop();
-            this.winner.numTerritories++;
+            this.winner.addTerritory();
         } else {
             throw new Error(`No winner found for Battle.`)
         }

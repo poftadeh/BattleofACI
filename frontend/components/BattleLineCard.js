@@ -15,7 +15,7 @@ class BattleLineCard extends React.Component {
         const attackValue = this.props.attackValue > 0 ? `, ${this.props.attackValue}` : "";
         return (
             <div 
-                className="card"
+                className="battleline-card"
                 onClick={(this.props.scarecrowSelected && this.props.type === "mercenary") ? this.playSwapCard : undefined}
             >
                 {`[${this.props.type}${attackValue}]`}
