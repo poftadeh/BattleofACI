@@ -30,6 +30,7 @@ class Dealer {
 
     mergeDiscardsWithDeck() {
         this.deck.cards = this.deck.cards.concat(this.deck.discards);
+        this.deck.discards = [];
         this.shuffleDeck();
     }
     

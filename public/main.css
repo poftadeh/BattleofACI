@@ -21,27 +21,35 @@
     justify-content: center;
   }
   
-  .hand-card {
+  .hand-card-container {
     margin: 0 0.5em;
-    height: 6em;
-    width: 12em;
     font-weight: bold;
     background-color: #ecf0f1;
     font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hand-card {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
-    vertical-align: center;
+    height: 2.5em;
+    width: 2em;
+    font-size: 2em;
   }
   
-  span {
-    padding-right: 0.2em; 
+  .attack-value {
+      color: red;
+      font-size: .6em;
+      display: block;
+      padding: 0 .15em;
   }
-  
 
 /* 
 ============================
-UNITS
+UNIT IMAGES
 ============================ 
 */
 
@@ -54,7 +62,7 @@ UNITS
   }
   
   .heroine {
-    background-image: url("./images/heroine.svg");
+    background-image: url("./images/heroine-dragon.svg");
   }
   
   .winter {

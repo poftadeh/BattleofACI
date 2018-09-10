@@ -59,9 +59,6 @@ class Deck {
 
     shuffle() {
         const tempDeck = [];
-        
-        this.cards = this.cards.concat(this.discards);
-        this.discards = [];
 
         while (this.cards.length > 0) {
             const randomIndex = Math.floor(Math.random() * this.cards.length);
