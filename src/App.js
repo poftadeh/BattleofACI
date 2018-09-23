@@ -1,7 +1,7 @@
-const Game = require('./src/entity/Game.js');
-const BattleOfACI = require('./frontend/components/BattleOfACI.js');
-const React = require('react');
-const ReactDOM = require('react-dom');
+import Game from './entity/Game.js';
+import BattleOfACI from './frontend/components/BattleOfACI.js';
+import React from 'react';
+import './main.css';
 
 class Session extends React.Component {
     constructor(props) {
@@ -32,4 +32,4 @@ class Session extends React.Component {
     }
 }
 
-ReactDOM.render(<Session />, document.getElementById('root'));
+export default Session

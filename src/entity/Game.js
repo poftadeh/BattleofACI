@@ -7,11 +7,6 @@ class Game {
     constructor(playerNames, numTerritoriesToWin) {
         this.playerNames = playerNames;
         this.players = [];
-        this.gameOver;
-        this.goesFirst;
-        this.battle;
-        this.board;
-        this.dealer;
         this.numTerritoriesToWin = numTerritoriesToWin || 4;
         this.getState = this.getState.bind(this);
         this.getPlayerTurn = this.getPlayerTurn.bind(this);
@@ -36,7 +31,7 @@ class Game {
         if (player === this.getPlayerTurn()) {
             this.battle.turn(player, action, type, attackValue, swapCardType, swapCardAttackValue);
         } else{
-            throw new Error(`Not ${player.name}'s turn to act! ${this.getPlayerTurn().name} must play.`);
+            //throw new Error(`Not ${player.name}'s turn to act! ${this.getPlayerTurn().name} must play.`);
         }
 
         if (this.battle.winner) {
@@ -71,7 +66,7 @@ class Game {
         } else if (this.winner && this.winner.length === 1) {
             this.goesFirst = this.winner;
         } else {
-            this.goesFirst = players[Math.floor(Math.random() * players.length)]
+            this.goesFirst = this.players[Math.floor(Math.random() * this.players.length)]
         }
     }
 

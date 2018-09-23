@@ -1,6 +1,5 @@
 class BattleLine {
     constructor() {
-        this.season;
         this.line = [];
         this.totalAttack = 0;
         this.highestAttackValue = 0;
@@ -47,7 +46,7 @@ class BattleLine {
 
         for (let i = 0; i < this.line.length; i++) {
             if (this.line[i].type === type
-                && this.line[i].attackValue == attackValue
+                && this.line[i].attackValue === attackValue
             ) {
                 removedCard = this.line.splice(i, 1).pop();
                 break;
@@ -67,7 +66,7 @@ class BattleLine {
     }
 
     toggleSpringBonus(bool) {
-        if (bool == true && this.season === "spring") {
+        if (bool === true && this.season === "spring") {
             this.hasSpringBonus = true;
         }
         else if (!bool) {

@@ -18,7 +18,6 @@ class HandCard extends React.Component {
     }
 
     render() {
-        const attackValue = this.props.attackValue > 0 ? `, ${this.props.attackValue}` : "";
         return (
             <div
                 className="hand-card-container"

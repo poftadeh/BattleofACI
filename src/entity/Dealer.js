@@ -1,5 +1,4 @@
 const Deck = require('./Deck.js');
-const Player = require('./Player.js');
 
 class Dealer {
     constructor() {

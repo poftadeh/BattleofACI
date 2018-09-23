@@ -1,9 +1,6 @@
-const Dealer = require('./Dealer.js');
-
 class Board {
     constructor(players) {
         this.players = players;
-        this.season;
     }
 
     addPlayer(player) {

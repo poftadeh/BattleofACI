@@ -1,4 +1,3 @@
-const Card = require('./Card.js');
 const MAX_HAND_SIZE = 10;
 
 class Hand {
@@ -64,7 +63,7 @@ class Hand {
     }
 
     setMaxSize(size) {
-        if (typeof (size) == 'number')
+        if (typeof (size) === 'number')
             return this.maxSize = size
         else
             throw new Error(`${size} is not a valid max size`)

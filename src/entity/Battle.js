@@ -1,13 +1,9 @@
-const Board = require('./Board');
-
-
 class Battle {
     constructor(players, board, dealer, goesFirst) {
         this.players = players;
         this.playerToAct = goesFirst;
         this.dealer = dealer;
         this.board = board;
-        this.winner;
         console.log("new battle", this.players);
     }
 
@@ -113,6 +109,7 @@ class Battle {
             case "surrender":
                 this.endBattle();
                 break;
+            default:
         }
     }
 }
