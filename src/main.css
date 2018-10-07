@@ -1,4 +1,4 @@
-* {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,18 +20,22 @@
     border: 0.5em solid #2980b9;
     justify-content: center;
   }
-  
-  .hand-card-container {
-    margin: 0 0.5em;
-    font-weight: bold;
+
+  .card {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
     background-color: #ecf0f1;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-  
+    
   .hand-card {
+    margin: 0 1rem;
+    height: 15rem;
+    width: 15rem;
+    font-size: 5rem;
+  }
+
+  .battleline-card {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;

@@ -1,4 +1,4 @@
-const Deck = require('./Deck.js');
+import Deck from './Deck.js';
 
 class Dealer {
     constructor() {
@@ -38,4 +38,4 @@ class Dealer {
     }
 }
 
-module.exports = Dealer;
+export default Dealer;

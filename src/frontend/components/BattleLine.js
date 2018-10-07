@@ -1,5 +1,5 @@
-const React = require('react');
-const BattleLineCard = require('./BattleLineCard.js');
+import React from 'react';
+import BattleLineCard from './BattleLineCard.js';
 
 class BattleLine extends React.Component {
   render() {
@@ -24,4 +24,4 @@ class BattleLine extends React.Component {
 
 
 
-module.exports = BattleLine;
+export default BattleLine;

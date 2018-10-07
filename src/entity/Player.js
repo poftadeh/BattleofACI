@@ -1,8 +1,6 @@
-const BattleLine = require('./BattleLine.js');
-const Hand = require('./Hand.js');
-const Card = require('./Card.js');
-// const readline = require('readline');
-// const r1 = readline.createInterface(process.stdin, process.stdout);
+import BattleLine from './BattleLine.js';
+import Hand from './Hand.js';
+import Card from './Card.js';
 
 class Player {
     constructor(name, numTerritories) {
@@ -49,4 +47,4 @@ class Player {
     }
 }
 
-module.exports = Player;
+export default Player;

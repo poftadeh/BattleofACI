@@ -1,7 +1,7 @@
-const Battle = require('./Battle.js');
-const Dealer = require('./Dealer.js');
-const Board = require('./Board.js');
-const Player = require('./Player.js');
+import Battle from './Battle.js';
+import Dealer from './Dealer.js';
+import Board from './Board.js';
+import Player from './Player.js';
 
 class Game {
     constructor(playerNames, numTerritoriesToWin) {
@@ -111,4 +111,4 @@ class Game {
 
 }
 
-module.exports = Game
+export default Game

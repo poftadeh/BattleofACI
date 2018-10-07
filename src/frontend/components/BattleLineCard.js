@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class BattleLineCard extends React.Component {
     constructor(props) {
@@ -24,4 +24,4 @@ class BattleLineCard extends React.Component {
     }
 }
 
-module.exports = BattleLineCard;
+export default BattleLineCard;

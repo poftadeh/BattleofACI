@@ -1,7 +1,7 @@
-const React = require('react');
-const Hand = require('./Hand.js');
-const Board = require('./Board.js');
-const PassButton = require('./PassButton.js');
+import TurnControls from './common/TurnControls';
+import React from 'react';
+import Hand from './Hand.js';
+import Board from './Board.js';
 
 class BattleofACI extends React.Component {
   constructor(props) {
@@ -38,10 +38,7 @@ class BattleofACI extends React.Component {
               onAction={this.props.onAction}
               toggleScarecrowSelected={this.toggleScarecrowSelected}
             />
-            <PassButton 
-              player={player}
-              onAction={this.props.onAction}
-            />
+            <TurnControls />
         </div>
         ))}
         <br />
@@ -53,4 +50,4 @@ class BattleofACI extends React.Component {
 
 }
 
-module.exports = BattleofACI;
+export default BattleofACI;

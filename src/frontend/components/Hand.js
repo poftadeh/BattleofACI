@@ -1,5 +1,5 @@
-const React = require('react');
-const HandCard = require('./HandCard.js');
+import React from 'react';
+import HandCard from './HandCard.js';
 
 class Hand extends React.Component {
     constructor(props) {
@@ -26,4 +26,4 @@ class Hand extends React.Component {
 
 }
 
-module.exports = Hand;
+export default Hand;

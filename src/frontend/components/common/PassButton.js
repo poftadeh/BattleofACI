@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class PassButton extends React.Component {
     constructor(props) {
@@ -19,4 +19,4 @@ class PassButton extends React.Component {
     }
 }
 
-module.exports = PassButton;
+export default PassButton;

@@ -1,4 +1,4 @@
-const Card = require('./Card.js');
+import Card from './Card.js';
 
 const NUM_WINTER = 3;
 const NUM_SPRING = 3;
@@ -71,4 +71,4 @@ class Deck {
     }
 }
 
-module.exports = Deck;
+export default Deck;

@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class HandCard extends React.Component {
     constructor(props) {
@@ -20,10 +20,9 @@ class HandCard extends React.Component {
     render() {
         return (
             <div
-                className="hand-card-container"
                 onClick={this.props.type === "scarecrow" ? this.enableScarecrowSelected : this.onAction}
             >
-                <div className={`hand-card ${this.props.type}`}>
+                <div className={`card hand-card ${this.props.type}`}>
                     <span className="attack-value">
                         {!!this.props.attackValue && this.props.attackValue}
                     </span>
@@ -33,4 +32,4 @@ class HandCard extends React.Component {
     }
 }
 
-module.exports = HandCard;
+export default HandCard;
