@@ -1,4 +1,3 @@
-import TurnControls from './common/TurnControls';
 import React from 'react';
 import Hand from './Hand.js';
 import Board from './Board.js';
@@ -38,7 +37,6 @@ class BattleofACI extends React.Component {
               onAction={this.props.onAction}
               toggleScarecrowSelected={this.toggleScarecrowSelected}
             />
-            <TurnControls />
         </div>
         ))}
         <br />

@@ -4,10 +4,10 @@ import PassButton from './PassButton'
 class TurnControls extends React.Component {
     render() {
         return (
-            <div>
-                <div>Left</div>
+            <div className="turn-controls">
+                <div>{'<<<'}</div>
                 <PassButton />
-                <div>Right</div>
+                <div>>>></div>
             </div>
         );
     }

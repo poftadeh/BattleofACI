@@ -12,7 +12,7 @@ class PassButton extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="pass-button">
                 <button onClick={this.onPass}>Pass</button>
             </div>
         );

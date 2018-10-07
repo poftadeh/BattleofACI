@@ -1,55 +1,84 @@
-  * {
+/* 
+============================
+MAIN
+============================ 
+*/
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html {
+}
+
+html {
     height: 100%;
     background-color: #2c3e50;
     font-size: 10px;
+    color: #ecf0f1;
     text-rendering: optimizeLegibility;
-  }
+}
 
-  body {
-      height: 100%;
-  }
+body {
+    height: 100%;
+}
 
-  .hand {
+/* 
+============================
+HAND COMPONENTS
+============================ 
+*/
+
+.hand {
     display: flex;
     border: 0.5em solid #2980b9;
     justify-content: center;
-  }
+}
 
-  .card {
+.card {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
     background-color: #ecf0f1;
-  }
-    
-  .hand-card {
+}
+
+.hand-card {
     margin: 0 1rem;
     height: 15rem;
     width: 15rem;
     font-size: 5rem;
-  }
+}
 
-  .battleline-card {
+.battleline-card {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
     height: 2.5em;
     width: 2em;
     font-size: 2em;
-  }
-  
-  .attack-value {
-      color: red;
-      font-size: .6em;
-      display: block;
-      padding: 0 .15em;
-  }
+}
+
+.attack-value {
+    color: red;
+    font-size: .6em;
+    display: block;
+    padding: 0 .15em;
+}
+
+/* 
+============================
+TURN CONTROLS
+============================ 
+*/
+
+.turn-controls {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.pass-button {
+  margin: 0 1rem;
+}
 
 /* 
 ============================
@@ -57,38 +86,38 @@ UNIT IMAGES
 ============================ 
 */
 
-  .mercenary {
+.mercenary {
     background-image: url("./images/mercenary.svg");
-  }
+}
 
-  .courtesan {
+.courtesan {
     background-image: url("./images/courtesan.svg");
-  }
-  
-  .heroine {
+}
+
+.heroine {
     background-image: url("./images/heroine-dragon.svg");
-  }
-  
-  .winter {
+}
+
+.winter {
     background-image: url("./images/winter.svg");
-  }
+}
 
-  .spring {
+.spring {
     background-image: url("./images/spring.svg");
-  }
+}
 
-  .scarecrow {
+.scarecrow {
     background-image: url("./images/scarecrow.svg");
-  }
+}
 
-  .bishop {
+.bishop {
     background-image: url("./images/bishop.svg");
-  }
+}
 
-  .surrender {
+.surrender {
     background-image: url("./images/surrender.svg");
-  }
+}
 
-  .drummer {
+.drummer {
     background-image: url("./images/drummer.svg");
-  }
+}

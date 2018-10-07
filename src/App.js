@@ -1,4 +1,4 @@
-import Game from './entity/Game.js';
+import Game from './backend/Game.js';
 import BattleOfACI from './frontend/components/BattleOfACI.js';
 import React from 'react';
 import './main.css';
